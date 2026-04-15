@@ -234,8 +234,3 @@ See also [`CONTRIBUTING.md`](CONTRIBUTING.md) and [`CHANGELOG.md`](CHANGELOG.md)
 
 [MIT](LICENSE)
 
----
-
-## GitHub
-
-See [docs/GITHUB.md](docs/GITHUB.md) for first push, badge URL, and repository hygiene.
