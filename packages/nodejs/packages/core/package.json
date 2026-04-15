@@ -1,0 +1,46 @@
+{
+  "name": "@btw/core",
+  "version": "0.1.0",
+  "description": "BLE core for Node.js (Linux adapter via Noble)",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@abandonware/noble": "^1.9.2-12"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.4.0"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "ble",
+    "bluetooth",
+    "gatt",
+    "noble"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/example/bluetooth-to-wifi.git",
+    "directory": "packages/nodejs/packages/core"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

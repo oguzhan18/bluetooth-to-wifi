@@ -1,0 +1,22 @@
+services:
+  mosquitto:
+    image: eclipse-mosquitto:2
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./deploy/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+
+  btw-api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.python
+    environment:
+      BTW_HOST: 0.0.0.0
+      BTW_PORT: "8765"
+      BTW_MQTT_HOST: mosquitto
+      BTW_MQTT_PORT: "1883"
+      BTW_MQTT_TOPIC: btw/devices
+    ports:
+      - "8765:8765"
+    depends_on:
+      - mosquitto

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bluetooth-to-wifi.dev/schemas/device-envelope.schema.json",
+  "title": "BTW Device Envelope",
+  "type": "object",
+  "required": ["schema_version", "source", "device", "payload", "timestamp_ms"],
+  "properties": {
+    "schema_version": { "type": "integer", "const": 1 },
+    "source": {
+      "type": "object",
+      "required": ["runtime"],
+      "properties": {
+        "runtime": { "type": "string", "enum": ["python", "nodejs", "esp32"] },
+        "bridge_id": { "type": "string" },
+        "adapter": { "type": "string" }
+      }
+    },
+    "device": {
+      "type": "object",
+      "required": ["address"],
+      "properties": {
+        "address": { "type": "string" },
+        "name": { "type": ["string", "null"] },
+        "manufacturer_data_hex": { "type": ["string", "null"] },
+        "service_uuids": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "payload": {
+      "type": "object",
+      "required": ["kind", "data"],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": ["temperature_c", "humidity_pct", "switch", "binary_sensor", "raw_bytes", "generic"]
+        },
+        "data": { "type": "object" },
+        "characteristic_uuid": { "type": ["string", "null"] }
+      }
+    },
+    "timestamp_ms": { "type": "integer", "minimum": 0 },
+    "rssi": { "type": ["integer", "null"] }
+  }
+}

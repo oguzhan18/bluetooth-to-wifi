@@ -1,0 +1,48 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install ruff pytest build
+          pip install -e packages/python/btw_core -e packages/python/btw_bridge -e packages/python/btw_api
+      - name: Lint
+        run: |
+          ruff check packages/python/btw_core/src packages/python/btw_bridge/src packages/python/btw_api/src
+          ruff format --check packages/python/btw_core/src packages/python/btw_bridge/src packages/python/btw_api/src
+      - name: Test
+        run: |
+          pytest -q packages/python/btw_core/tests
+      - name: Build
+        run: |
+          (cd packages/python/btw_core && python -m build -q)
+          (cd packages/python/btw_bridge && python -m build -q)
+          (cd packages/python/btw_api && python -m build -q)
+
+  node:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install (no native scripts)
+        run: |
+          cd packages/nodejs
+          npm install --ignore-scripts
+      - name: Build
+        run: |
+          cd packages/nodejs
+          npm run build
+

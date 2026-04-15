@@ -1,0 +1,40 @@
+{
+  "name": "@btw/api",
+  "version": "0.1.0",
+  "description": "REST + WebSocket API for bluetooth-to-wifi",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "btw-api-node": "./dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@btw/bridge": "file:../bridge",
+    "@fastify/websocket": "^10.0.0",
+    "fastify": "^4.26.0",
+    "mqtt": "^5.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.4.0"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/example/bluetooth-to-wifi.git",
+    "directory": "packages/nodejs/packages/api"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

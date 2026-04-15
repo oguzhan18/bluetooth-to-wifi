@@ -1,0 +1,26 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "btw-api"
+version = "0.1.0"
+description = "REST + WebSocket + MQTT edge API for bluetooth-to-wifi"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+dependencies = [
+  "btw-bridge>=0.1.0",
+  "btw-core>=0.1.0",
+  "fastapi>=0.110",
+  "uvicorn[standard]>=0.27",
+]
+
+[project.optional-dependencies]
+dev = ["httpx>=0.26", "pytest>=7.0", "pytest-asyncio>=0.23", "ruff>=0.3"]
+
+[project.scripts]
+btw-api = "btw_api.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/btw_api"]

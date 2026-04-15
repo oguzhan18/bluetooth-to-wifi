@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "source": { "runtime": "python", "bridge_id": "demo", "adapter": null },
+  "device": {
+    "address": "AA:BB:CC:DD:EE:FF",
+    "name": "Demo",
+    "manufacturer_data_hex": null,
+    "service_uuids": ["0000180a-0000-1000-8000-00805f9b34fb"]
+  },
+  "payload": {
+    "kind": "temperature_c",
+    "data": { "value": 23.5, "unit": "celsius" },
+    "characteristic_uuid": "00002a6e-0000-1000-8000-00805f9b34fb"
+  },
+  "timestamp_ms": 1713200000000,
+  "rssi": -62
+}

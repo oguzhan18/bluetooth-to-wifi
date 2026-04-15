@@ -1,0 +1,18 @@
+FROM python:3.12-slim
+
+WORKDIR /app
+
+COPY packages/python/btw_core /app/packages/python/btw_core
+COPY packages/python/btw_bridge /app/packages/python/btw_bridge
+COPY packages/python/btw_api /app/packages/python/btw_api
+
+RUN python -m pip install --no-cache-dir --upgrade pip \
+  && pip install --no-cache-dir /app/packages/python/btw_core /app/packages/python/btw_bridge /app/packages/python/btw_api
+
+EXPOSE 8765
+
+ENV BTW_HOST=0.0.0.0
+ENV BTW_PORT=8765
+
+CMD ["btw-api", "--host", "0.0.0.0", "--port", "8765"]
+

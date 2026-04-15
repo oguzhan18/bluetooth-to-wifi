@@ -1,0 +1,16 @@
+{
+  "name": "bluetooth-to-wifi",
+  "private": true,
+  "workspaces": [
+    "packages/core",
+    "packages/bridge",
+    "packages/api"
+  ],
+  "scripts": {
+    "build": "npm run build -w @btw/core -w @btw/bridge -w @btw/api",
+    "clean": "rm -rf packages/*/dist"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

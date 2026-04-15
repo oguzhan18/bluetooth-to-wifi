@@ -1,0 +1,30 @@
+menu "Bluetooth-to-WiFi"
+
+config BTW_WIFI_SSID string "WiFi SSID"
+    default "myssid"
+
+config BTW_WIFI_PASSWORD
+    string "WiFi password"
+    default "mypass"
+
+config BTW_HTTP_URL
+    string "Downstream HTTP URL (POST JSON)"
+    default "http://192.168.1.10:8765/v1/ingest"
+
+config BTW_BRIDGE_ID
+    string "Bridge id"
+    default "esp32-edge"
+
+config BTW_BLE_TARGET_ADDR
+    string "Target BLE address (AA:BB:CC:DD:EE:FF)"
+    default "00:00:00:00:00:00"
+
+config BTW_SERVICE_UUID
+    string "Target service UUID (optional)"
+    default ""
+
+config BTW_CHAR_UUID
+    string "Target characteristic UUID (notify)"
+    default "00002a6e-0000-1000-8000-00805f9b34fb"
+
+endmenu

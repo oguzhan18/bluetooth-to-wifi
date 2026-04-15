@@ -1,0 +1,44 @@
+{
+  "name": "@btw/bridge",
+  "version": "0.1.0",
+  "description": "JSON envelope and sinks for bluetooth-to-wifi",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@btw/core": "file:../core",
+    "mqtt": "^5.3.0",
+    "ws": "^8.16.0",
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/ws": "^8.5.10",
+    "typescript": "^5.4.0"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/example/bluetooth-to-wifi.git",
+    "directory": "packages/nodejs/packages/bridge"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
